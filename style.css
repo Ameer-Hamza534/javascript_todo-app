@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    list-style: none;
+}
+
+body {
+    background: #0B1416;
+    overflow-x: hidden;
+}
+
+.main-container {
+    height: 100vh;
+    width: 100vw;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.wrapper {
+     width: 100%;
+     max-width: 540px;
+     margin: 100px auto 20px;
+     padding: 40px 30px 70px;
+}
+
+.alert-box {
+    width: fit-content;
+    height: 30px;
+    background: #ff5945;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 500;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: 0;
+}
+
+
+.heading {
+    text-align: center;
+    font-size: 92px;
+    color: #fff;
+}
+
+.form-container {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    background: #223237;
+    border-radius: 30px;
+    padding-left: 10px;
+    margin: 40px 0;
+}
+
+#input-box {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    caret-color: #ff5945;
+    color: #BD9863;
+}
+
+
+.add-btn {
+    border: none;
+    outline: none;
+    padding: 16px 50px;
+    background: #ff5945;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 40px;
+}
+
+.list-container .item{
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.list-container .item::before {
+    content: '';
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background-image: url(images/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top: 10px;
+    left: 8px;
+}
+
+.list-container .checked {
+    color: #555;
+    text-decoration: line-through;
+}
+.list-container .checked::before {
+    background-image: url(images/checked.png);
+}
+
+.list-container .item span {
+    position: absolute;
+    right: 0;
+    top: 7px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 32px;
+    font-weight: 700;
+    color: #555;
+    line-height: 25px;
+    text-align: center;
+}
+
+.list-container .item span:hover {
+    background: #ff5945;
+    color: #fff;
+    transition: 0.9s;
+    transform: rotate(180deg);
+}
+
+.quote {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    font-size: 18px;
+    color: #BD9863;
+    overflow: hidden;
+    width: 30%;
+}
+
+#quoteText {
+    font-family: 'Space Mono', monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #BD9863;
+}
