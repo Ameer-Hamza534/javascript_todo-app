@@ -15,6 +15,69 @@ body {
     overflow-x: hidden;
 }
 
+@media only screen and (max-width: 768px) {
+    .heading {
+        font-size: 56px !important;
+    }
+    .quote {
+        width: 50% !important;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .wrapper {
+        padding: 40px 50px 70px !important;
+    }
+    .add-btn {
+        padding: 16px !important;
+    }
+    .heading {
+        font-size: 56px !important;
+    }
+    .add-btn {
+        padding: 16px ;
+    }
+    .quote {
+        width: 75% !important;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .wrapper {
+        padding: 20px !important;
+    }
+    .add-btn {
+        padding: 16px !important;
+    }
+    .heading {
+        font-size: 56px !important;
+    }
+    .add-btn {
+        padding: 16px ;
+    }
+    .quote {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .wrapper {
+        padding: 10px 0 !important;
+    }
+    .add-btn {
+        padding: 16px !important;
+    }
+    .heading {
+        font-size: 32px !important;
+    }
+    .add-btn {
+        padding: 16px ;
+    }
+    .quote {
+        display: none;
+    }
+}
+
 .main-container {
     height: 100vh;
     width: 100vw;

@@ -2,7 +2,8 @@ const inputBox = document.getElementById('input-box');
 const listContainer = document.querySelector('.list-container');
 const addBtn = document.querySelector('.add-btn');
 const alertBox = document.querySelector('.alert-box');
-
+const quoteText = document.getElementById("quote-text");
+const text = quoteText.textContent; // Remove trim to keep initial content
 
 // alert message box
 function showAlert(message) {
@@ -13,59 +14,66 @@ function showAlert(message) {
     }, 2000);
 }
 
-function saveData() {
-    localStorage.setItem('data', listContainer.innerHTML)
+const saveDataInLocalStorage = () => {
+    localStorage.setItem('data', listContainer.innerHTML);
 }
 
 function showData() {
-    const savedData = localStorage.getItem('data');
-            if (savedData) {
-                listContainer.innerHTML = savedData;
-                addRemoveEventListeners()
-            }
+    const data = localStorage.getItem('data');
+    if (data) {
+        listContainer.innerHTML = data;
+    }
 }
+
 showData();
 
-// add item to list
-addBtn.addEventListener('click', () => {
+// ADD DATA
+function addItem() {
     let inputValue = inputBox.value;
-    if (inputValue === '') {
-        showAlert('You must write something!');
+    if (inputValue === "") {
+        showAlert("Please write something!");
     } else {
-        let li = document.createElement('li');
-        li.classList.add('item');
-        li.innerHTML = inputValue;
+        const li = document.createElement('li');
+        li.className = "item";
+        li.textContent = inputValue;
         listContainer.appendChild(li);
-        let span = document.createElement('span');
+        const span = document.createElement('span');
         span.innerHTML = '\u00d7';
         li.appendChild(span);
+
+        // Clear the input value
         inputBox.value = "";
-        saveData()
-        showAlert('Item added successfully');
+
+        saveDataInLocalStorage();
+        showAlert('Task Added Successfully');
+    }
+}
+
+addBtn.addEventListener("click", addItem);
+
+// Listen for the "Enter" key press
+inputBox.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        addItem();
     }
 });
 
-function addRemoveEventListeners() {
-    listContainer.addEventListener('click', (e) => {
-        const target = e.target;
-        if (target.tagName === 'LI') {
-            target.classList.toggle('checked');
-            saveData();
-        } else if (target.tagName === 'SPAN') {
-            const listItem = target.parentElement;
-            listItem.remove();
-            saveData();
-            showAlert('Item removed successfully');
-        }
-    });
-}
 
-const quoteText = document.getElementById("quote-text");
-const text = quoteText.textContent.trim();
-quoteText.textContent = ""; // Clear the text content
-
+// CHECKED DATA AS COMPLETED & REMOVE DATA
+listContainer.addEventListener("click", (e) => {
+    const target = e.target;
+    if (target.tagName === "LI") {
+        target.classList.toggle("checked");
+        saveDataInLocalStorage();
+    } else if (target.tagName === "SPAN") {
+        target.parentElement.remove();
+        saveDataInLocalStorage();
+        showAlert('Task Removed Successfully');
+    }
+});
 
 // Quote typing animation
+quoteText.textContent = "";
 function typeWriter(text, i) {
     if (i < text.length) {
         quoteText.textContent += text.charAt(i);
